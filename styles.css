@@ -18,7 +18,7 @@ nav {
 .navbar-brand {
     display: flex;
     align-items: center;
-    color: #088395; 
+    color: #37B7C3;
     font-weight: 600;
     font-size: 1.5rem;
 }
@@ -54,14 +54,14 @@ nav {
 }
 
 .btn-outline-primary {
-    border-color: #088395;  
-    color: #088395;  
+    border-color: #37B7C3;
+    color: #37B7C3;
     background-color: transparent;  
     transition: background-color 0.3s ease;  
 }
 
 .btn-outline-primary:hover {
-    border-color: #088395;
+    border-color: #088395;  
     background-color: #088395;  
     color: #ffffff;  
 }
@@ -245,6 +245,19 @@ p {
     border-radius: 5px;
 }
 
+@media (max-width: 768px) {
+    .text-container h1 {
+        font-size: 2.5rem;  
+    }
+    .text-container p {
+        font-size: 1.5rem;  
+    }
+    .start-designing-btn {
+        padding: 10px 20px; 
+        font-size: 1rem;  
+    }
+}
+
 /* Portfolio Section */
 #portfolio-themes {
     height: 100vh;
@@ -367,7 +380,13 @@ p {
 }
 
 @media (max-width: 768px) {
+    .carousel-inner {
+        display: flex;
+        flex-direction: column;  
+    }
+
     .theme-card {
+        width: 90%;
         margin-bottom: 20px; 
     }
 }
@@ -465,9 +484,25 @@ p {
     background-color: #088395;  
 }
 
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;  
+    }
+    .map, .contact-form {
+        height: 300px;  
+    }
+}
+
+section {
+    padding: 60px 20px;
+    box-sizing: border-box;
+    overflow: auto; 
+  }
+
 /* About Us Section */
 #about-us {
     height: 100vh;
+    min-height: 100vh;
     text-align: center;
     padding: 50px 20px;
     background-color: #EBF4F6;
@@ -548,6 +583,17 @@ p {
     color: #088395;  
 }
 
+@media (max-width: 768px) {
+    .team-members {
+        grid-template-columns: 1fr;  
+        width: 100%; 
+    }
+
+    section {
+        padding: 40px 10px;
+    }
+}
+
 /* Footer Styles */
 #footer {
     background-color: #088395;
@@ -558,13 +604,14 @@ p {
 
 .footer-logo {
     text-align: center;
+    transition: transform 0.3s ease;
 }
 
 .footer-logo img {
     width: 150px;  
     height: auto;
     margin-bottom: 10px;
-    transition: transform 5s ease;
+    
 }
 
 .footer-logo:hover {
@@ -678,6 +725,10 @@ p {
 
     .footer-social .social-icons {
         justify-content: center;
+    }
+
+    .footer-logo img {
+        width: 100px;  
     }
 }
 
