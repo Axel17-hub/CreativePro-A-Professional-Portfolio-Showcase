@@ -382,7 +382,6 @@ p {
 @media (max-width: 768px) {
     .carousel-inner {
         display: flex;
-        flex-direction: column;  
     }
 
     .theme-card {
@@ -451,7 +450,7 @@ p {
 .contact-form input,
 .contact-form textarea {
     margin-bottom: 15px;
-    padding: 10px;
+    padding: 1px;
     border: 1px solid #37B7C3;  
     border-radius: 5px;
     outline: none;
@@ -486,18 +485,46 @@ p {
 
 @media (max-width: 768px) {
     .contact-container {
-        flex-direction: column;  
+        flex-direction: column;
     }
-    .map, .contact-form {
-        height: 300px;  
+
+    .map {
+        height: 250px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-form h2 {
+        font-size: 24px;
+    }
+
+    .contact-form p {
+        font-size: 13px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    .contact-form button {
+        font-size: 14px;
+        padding: 8px;
     }
 }
 
-section {
-    padding: 60px 20px;
-    box-sizing: border-box;
-    overflow: auto; 
-  }
+@media (max-width: 480px) {
+    .contact-form h2 {
+        font-size: 20px;
+    }
+
+    .contact-form p {
+        font-size: 12px;
+    }
+}
 
 /* About Us Section */
 #about-us {
@@ -509,35 +536,45 @@ section {
     color: #071952;
 }
 
+section {
+    padding: 60px 20px;
+    box-sizing: border-box;
+    overflow: auto; 
+  }
+
 #about-us h2, #about-us h3 {
+    font-size: 2em;
     color: #088395; 
+    margin-bottom: 20px; 
 }
 
 .about-content p {
-    max-width: 800px;
-    margin: 0 auto 5px;
-    line-height: 1;
-    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+    font-size: 1em;
+    padding: 0 10px;
 }
 
 .our-team {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .team-members {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
     justify-items: center;
     align-items: center;
 }
 
 .team-member {
-    width: 275px;  
-    height: 375px;
+    width: 100%;
+    max-width: 275px;
+    height: 350px;
     text-align: center;
     background-color: #ffffff;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -558,8 +595,9 @@ section {
 }
 
 .team-member h4 {
+    font-size: 1.2em;
     margin: 10px 0 5px;
-    color: #071952;  
+    color: #071952;    
 }
 
 .team-member p {
@@ -568,7 +606,7 @@ section {
 }
 
 .social-icons {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .social-icons a {
@@ -584,13 +622,73 @@ section {
 }
 
 @media (max-width: 768px) {
-    .team-members {
-        grid-template-columns: 1fr;  
-        width: 100%; 
+    #about-us {
+        padding: 20px 10px;
     }
 
-    section {
-        padding: 40px 10px;
+    #about-us h2, #about-us h3 {
+        font-size: 1.8em;
+    }
+
+    .about-content p {
+        font-size: 0.9em;
+    }
+
+    .team-members {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .team-member {
+        max-width: 90%;  
+    }
+
+    .team-member img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .team-member h4 {
+        font-size: 1em;
+    }
+
+    .team-member p {
+        font-size: 0.85em;
+    }
+
+    .social-icons a {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    #about-us h2, #about-us h3 {
+        font-size: 1.6em;
+    }
+
+    .about-content p {
+        font-size: 0.8em;
+    }
+
+    .team-member {
+        padding: 10px;
+    }
+
+    .team-member img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .team-member h4 {
+        font-size: 0.9em;
+    }
+
+    .team-member p {
+        font-size: 0.75em;
+    }
+
+    .social-icons a {
+        font-size: 1em;
     }
 }
 
