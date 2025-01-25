@@ -1,0 +1,388 @@
+/* Common Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f8fb;
+    color: #333;
+}
+
+/* CreativePro Logo Styling */
+#logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #088395;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+#logo img {
+    width: 75px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#logo span {
+    color: #088395;
+}
+
+body.classic {
+    background-color: #f4f8fb;
+    color: #071952;
+    font-family: 'Georgia', serif;
+}
+
+body.modern {
+    background-color: #f1f1f1;
+    color: green;
+    font-family: 'Roboto', sans-serif;
+}
+
+body.dark {
+    background-color: #121212;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Classic Elegance Theme */
+body.classic .portfolio-form {
+    border: 1px solid #d1d9e6;
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.classic .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.classic #imagePreviewContainer {
+    margin-bottom: 15px;
+}
+
+body.classic #imagePreview {
+    display: block;
+    max-height: auto;
+    border: 1px solid #088395;
+    border-radius: 8px;
+    margin-top: 10px;
+    object-fit: fill;
+    width: 25%;
+}
+
+body.classic h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+body.classic form {
+    margin-bottom: 20px;
+}
+
+body.classic label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+body.classic input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+body.classic button {
+    background-color: #088395;  
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+body.classic button:hover {
+    background-color: #071952;  
+    border-color: #071952;
+}
+
+body.classic button:active {
+    background-color: #37B7C3; 
+}
+
+body.classic .preview {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+body.classic .preview:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+body.classic ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Modern Vibrance Theme */
+body.modern .portfolio-form {
+    background-color: #fff;
+    border: 1px solid #d1e9e6;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+body.modern .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.modern #imagePreviewContainer {
+    margin-bottom: 15px;
+}
+
+body.modern #imagePreview {
+    display: block;
+    max-height: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 10px;
+    object-fit: fill;
+    width: 25%;
+}
+
+body.modern h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+body.modern form {
+    margin-bottom: 20px;
+}
+
+body.modern label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+body.modern input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+body.modern button {
+    background-color: green;  
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+body.modern button:hover {
+    background-color: darkgreen;  
+    border-color: darkgreen;
+}
+
+body.modern button:active {
+    background-color: green; 
+}
+
+body.modern .preview {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+body.modern .preview:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+body.modern ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Bold & Dark Theme */
+body.dark .portfolio-form {
+    border: 1px solid #444;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    margin-top: 100px;
+    padding: 40px 50px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    text-align: center;
+}
+
+body.dark .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: lightgray;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body.dark #imagePreviewContainer {
+    margin-bottom: 15px;
+}
+
+body.dark #imagePreview {
+    display: block;
+    max-height: auto;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-top: 10px;
+    object-fit: fill;
+    width: 25%;
+}
+
+body.dark h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+body.dark form {
+    margin-bottom: 20px;
+}
+
+body.dark label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+body.dark input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+body.dark button {
+    background-color: #434343;  
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark button:hover {
+    background-color: black; 
+    border-color: black;
+}
+
+body.dark button:active {
+    background-color: #434343;  
+}
+
+body.dark .preview {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark .preview:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+body.dark ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #logo {
+        top: 10px;
+        left: 10px;
+        font-size: 28px;
+    }
+
+    .portfolio-form {
+        padding: 20px;
+        width: 90%;
+    }
+
+    body.classic .portfolio-form,
+    body.modern .portfolio-form,
+    body.dark .portfolio-form {
+        width: 90%;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    body.classic h2, body.modern h2, body.dark h2 {
+        font-size: 24px;
+    }
+
+    body.classic .btn-primary, body.modern .btn-primary, body.dark .btn-primary {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    #logo {
+        font-size: 24px;
+        top: 5px;
+        left: 5px;
+    }
+
+    .portfolio-form {
+        padding: 15px;
+        width: 100%;
+    }
+
+    body.classic h2, body.modern h2, body.dark h2 {
+        font-size: 20px;
+    }
+
+    body.classic .btn-primary, body.modern .btn-primary, body.dark .btn-primary {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
