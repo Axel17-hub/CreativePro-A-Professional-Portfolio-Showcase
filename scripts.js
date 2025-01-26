@@ -9,29 +9,6 @@ const themeButtons = document.querySelectorAll('.select-theme');
         });
     });
 
-// JavaScript to apply selected theme
-window.onload = function() {
-    const selectedTheme = localStorage.getItem('selectedTheme');
-    const themePreviewContent = document.getElementById('themePreviewContent');
-
-    if (selectedTheme) {
-        switch (selectedTheme) {
-            case 'classic':
-                themePreviewContent.innerHTML = '<h3>Classic Elegance</h3><p>This is the classic and clean layout with soft colors.</p>';
-                break;
-            case 'modern':
-                themePreviewContent.innerHTML = '<h3>Modern Vibrance</h3><p>This theme uses bright colors and dynamic animations.</p>';
-                break;
-            case 'dark':
-                themePreviewContent.innerHTML = '<h3>Bold & Dark</h3><p>This theme features bold dark backgrounds with vibrant highlights.</p>';
-                break;
-            default:
-                themePreviewContent.innerHTML = '<h3>Default Preview</h3><p>No theme selected.</p>';
-                break;
-        }
-    }
-};
-
 // Apply the selected theme from localStorage
 document.addEventListener('DOMContentLoaded', function() {
     const selectedTheme = localStorage.getItem('selectedTheme');
@@ -70,7 +47,6 @@ document.getElementById('imageUploader').addEventListener('change', function (e)
         const reader = new FileReader();
         reader.onload = function (event) {
             const imageData = event.target.result;
-            // Update the preview
             const previewImage = document.getElementById('imagePreview');
             previewImage.src = imageData;
             previewImage.style.display = 'block';
@@ -79,79 +55,310 @@ document.getElementById('imageUploader').addEventListener('change', function (e)
             portfolioPreviewImage.src = imageData;
             portfolioPreviewImage.style.display = 'block';
 
-            // Save image data to localStorage
             localStorage.setItem('profileImage', imageData);
         };
         reader.readAsDataURL(file);
     }
 });
 
-// Save Portfolio Data to Local Storage
-document.getElementById('portfolio-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const bio = document.getElementById('bio').value;
-    const skills = document.getElementById('skills').value;
-    const projects = document.getElementById('projects').value;
-    const profileImage = localStorage.getItem('profileImage') || '';
+// Handle Clear Button Click
+document.getElementById('clearButton').addEventListener('click', function () {
+    // Clear the text inputs
+    document.getElementById('name').value = '';
+    document.getElementById('bio').value = '';
+    document.getElementById('skills').value = '';
+    document.getElementById('projects').value = '';
+    document.getElementById('imageUploader').value = '';
 
-    const portfolioData = { name, bio, skills, projects, profileImage };
-    localStorage.setItem('portfolioData', JSON.stringify(portfolioData));
-    alert('Portfolio data saved!');
+    const previewImage = document.getElementById('imagePreview');
+    previewImage.src = '';
+    previewImage.style.display = 'none';
+
+    const previewImagePortfolio = document.getElementById('previewImage');
+    previewImagePortfolio.src = '';
+    previewImagePortfolio.style.display = 'none';
+    document.getElementById('previewName').innerText = '[Your Name]';
+    document.getElementById('previewBio').innerText = '[Your bio will appear here]';
+    document.getElementById('previewSkills').innerHTML = '';
+    document.getElementById('previewProjects').innerHTML = '';
 });
 
-// Load Portfolio Data on Page Load
-window.onload = function () {
-    const portfolioData = JSON.parse(localStorage.getItem('portfolioData'));
-    if (portfolioData) {
-        document.getElementById('name').value = portfolioData.name;
-        document.getElementById('bio').value = portfolioData.bio;
-        document.getElementById('skills').value = portfolioData.skills;
-        document.getElementById('projects').value = portfolioData.projects;
-
-        if (portfolioData.profileImage) {
-            document.getElementById('imagePreview').src = portfolioData.profileImage;
-            document.getElementById('imagePreview').style.display = 'block';
-            document.getElementById('previewImage').src = portfolioData.profileImage;
-            document.getElementById('previewImage').style.display = 'block';
-        }
-
-        // Update the preview
-        document.getElementById('previewName').innerText = portfolioData.name;
-        document.getElementById('previewBio').innerText = portfolioData.bio;
-        document.getElementById('previewSkills').innerHTML = portfolioData.skills
-            .split(',')
-            .map(skill => `<li>${skill.trim()}</li>`)
-            .join('');
+// Dynamic Preview Updates (for projects)
+document.getElementById('projects').addEventListener('input', function (e) {
+    const projectsList = document.getElementById('previewProjects');
+    projectsList.innerHTML = '';
+    if (e.target.value) {
+        const projects = e.target.value.split('\n').map(project => project.trim());
+        projects.forEach(project => {
+            const li = document.createElement('li');
+            li.innerText = project;
+            projectsList.appendChild(li);
+        });
     }
-};
+});
+
 
 // Export Portfolio as HTML File
 document.getElementById('exportBtn').addEventListener('click', function () {
-    const name = document.getElementById('name').value || '[Your Name]';
-    const bio = document.getElementById('bio').value || '[Your bio]';
-    const skills = document.getElementById('skills').value || '';
+    const encodeHTML = (str) => {
+        return str.replace(/&/g, "&amp;")
+                  .replace(/</g, "&lt;")
+                  .replace(/>/g, "&gt;")
+                  .replace(/"/g, "&quot;")
+                  .replace(/'/g, "&#039;");
+    };
+
+    const name = encodeHTML(document.getElementById('name').value || '[Your Name]');
+    const bio = encodeHTML(document.getElementById('bio').value || '[Your bio]');
+    const skills = encodeHTML(document.getElementById('skills').value || '');
     const skillsList = skills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('');
-    const profileImage = document.getElementById('imagePreview').src || '';
+    const projects = encodeHTML(document.getElementById('projects').value || '');
+    const projectsList = projects.split(',').map(project => `<li>${project.trim()}</li>`).join('');
+    const profileImage = document.getElementById('imagePreview').src || 'default-profile.jpg';
+
+    const bodyElement = document.body;
+    let activeTheme = 'classic';
+    if (bodyElement.classList.contains('modern')) {
+        activeTheme = 'modern';
+    } else if (bodyElement.classList.contains('dark')) {
+        activeTheme = 'dark';
+    }
+
+    const themeStyles = {
+        classic: `
+            body.classic {
+                margin: 10px 0;
+                background-color: white;
+                color: #071952;
+                font-family: 'Georgia', serif;
+            }
+
+            body.classic #portfolio {
+                max-width: auto;
+                max-height: 100%;
+                background-image: url('https://img.freepik.com/free-vector/gradient-blue-background_23-2149331354.jpg?t=st=1737894088~exp=1737897688~hmac=aa2fe0419e7f9071a9409db61fd45c8cba76a9f81cbaf3e7849277560fd9f6e1&w=900');
+                background-size: cover;
+                background-position: center;
+                color: lightblue;
+            }
+
+            body.classic #Image {
+                margin: 10px 0;
+                display: block;
+                margin: 0 auto;
+                border: 5px solid cyan;
+                border-radius: 50%;
+                max-width: 200px;
+            }
+
+            body.classic #Name {
+                text-align: center;
+                font-size: 32px;
+                margin-top: 20px;
+            }
+
+            body.classic #Bio {
+                text-align: center;
+                font-size: 20px;
+                margin-top: 10px;
+            }
+
+            body.classic h1, body.classic p {
+                text-align: center;
+            }
+
+            body.classic h3 {
+                margin-left: 20px;
+            }
+
+            body.classic ul {
+                list-style-type: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            body.classic ul li {
+                margin: 5px 10px;
+                border: 1px solid lightblue;
+                padding: 5px;
+                border-radius: 5px;
+                transition: 0.3s ease;
+            }
+            body.classic ul li:hover {
+                background-color: lightblue;
+                color: white;
+            }
+        `,
+        modern: `
+            body.modern {
+                font-family: 'Roboto', sans-serif;
+                background-color: #f5f5f5;
+                color: #333;
+            }
+
+            body.modern #portfolio {
+                background-image: url('https://img.freepik.com/free-vector/green-abstract-geometric-background_23-2148373478.jpg?t=st=1737893963~exp=1737897563~hmac=d5697a5c552438e9da024fed25c63662695ede2b00a312b94f72ce8c55b7ea6c&w=900');  
+                background-size: cover;
+                background-position: center;
+                color: darkgreen;
+            }
+
+            body.modern #Image {
+                margin: 10px 0;
+                display: block;
+                margin: 0 auto;
+                border: 5px solid darkgreen;
+                border-radius: 50%;
+                max-width: 200px;
+            }
+
+            body.modern #Name {
+                text-align: center;
+                font-size: 32px;
+                margin-top: 20px;
+            }
+
+            body.modern #Bio {
+                text-align: center;
+                font-size: 20px;
+                margin-top: 10px;
+            }
+
+            body.modern h1, body.classic p {
+                text-align: center;
+            }
+
+            body.modern h3 {
+                margin-left: 20px;
+            }
+
+            body.modern ul {
+                list-style-type: none;
+                padding: 0;
+                margin-top: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            body.modern ul li {
+                font-size: 18px;
+                background-color: green;
+                color: white;
+                margin: 10px 15px;
+                padding: 5px 10px;
+                border: 1px solid green;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+            body.modern ul li:hover {
+                background-color: darkgreen;
+                color: white;
+            }
+        `,
+        dark: `
+            body.dark {
+                font-family: 'Courier New', monospace;
+                background-color: #333;
+                color: #fff;
+            }
+
+            body.dark #portfolio {
+                font-family: 'Georgia', serif;
+                background-image: url('https://img.freepik.com/free-vector/abstract-black-texture-background-hexagon_206725-413.jpg?t=st=1737893827~exp=1737897427~hmac=ad93804fa48b1ccb051c8f39aa944bc2a7af1ff4a4a3082e99a2e6c79a644b29&w=900');  
+                background-size: cover;
+                background-position: center;
+                color: white;
+            }
+
+            body.dark #Image {
+                margin: 10px 0;
+                display: block;
+                margin: 0 auto;
+                border: 5px solid white;
+                border-radius: 50%;
+                max-width: 200px;
+            }
+
+            body.dark #Name {
+                text-align: center;
+                font-size: 36px;
+                margin-top: 15px;
+            }
+
+            body.dark #Bio {
+                text-align: center;
+                font-size: 20px;
+                margin-top: 10px;
+            }
+
+            body.dark h3 {
+                margin-left: 20px;
+            }
+
+            body.dark ul {
+                list-style-type: none;
+                padding: 0;
+                margin-top: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            body.dark ul li {
+                font-size: 18px;
+                background-color: gray;
+                color: white;
+                margin: 10px 15px;
+                padding: 5px 10px;
+                border: 1px solid black;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+
+            body.dark ul li:hover {
+                background-color: darkgrey;
+                color: white;
+            }
+        `
+    };
+
+    const styles = themeStyles[activeTheme] || themeStyles['classic'];
 
     const portfolioHtml = `
         <html>
         <head>
-            <title>${name}'s Portfolio</title>
+            <style>
+                ${styles}
+            </style>
         </head>
-        <body>
-            <h1>${name}</h1>
-            <img src="${profileImage}" alt="Profile Picture" style="max-width: 150px; border-radius: 50%; margin-bottom: 15px;">
-            <p>${bio}</p>
-            <h3>Skills:</h3>
-            <ul>${skillsList}</ul>
+        <body class="${activeTheme}">
+            <div id="portfolio">
+                <img id="Image" src="${profileImage}" alt="Profile Picture">
+                <h1 id="Name">${name}</h1>
+                <p id="Bio">${bio}</p>
+                <h3>Skills:</h3>
+                <ul>${skillsList}</ul>
+                <h3>Projects:</h3>
+                <ul>${projectsList}</ul>
+            </div>
         </body>
         </html>
     `;
 
     const blob = new Blob([portfolioHtml], { type: 'text/html' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'portfolio.html';
-    link.click();
+
+    // For mobile devices, use Blob to trigger the download
+    if (window.navigator.msSaveBlob) {  // For IE
+        window.navigator.msSaveBlob(blob, 'portfolio.html');
+    } else {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'portfolio.html';
+
+        // Create a click event to simulate the download action on mobile
+        const clickEvent = new MouseEvent('click');
+        link.dispatchEvent(clickEvent);
+    }
 });
+
