@@ -437,6 +437,10 @@ p {
         padding: 30px 15px;  
     }
 
+    .carousel-inner {
+        display: flex;
+    }
+
     .theme-card {
         width: 100%;  
         max-width: 600px;   
