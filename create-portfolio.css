@@ -86,6 +86,40 @@ body.dark {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
+#previewProjects {
+    list-style: none;  
+    padding: 0;
+    margin: 20px 0;
+    display: flex;  
+    flex-wrap: wrap;  
+    justify-content: center;  
+    gap: 15px;  
+}
+
+#previewProjects li {
+    font-size: 18px;
+    padding: 10px 15px;
+    margin: 5px;
+    border: 2px solid #37B7C3;  
+    border-radius: 8px;  
+    background-color: #EBF4F6;  
+    color: #071952;  
+    transition: transform 0.3s ease, background-color 0.3s ease;  
+}
+
+#previewProjects li:hover {
+    background-color: #37B7C3;  
+    color: #ffffff;  
+    transform: translateY(-5px);  
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);  
+}
+
+#previewProjects li:active {
+    transform: translateY(0);  
+    background-color: #088395;  
+    border-color: #071952;  
+}
+
 /* Classic Elegance Theme */
 body.classic .portfolio-form {
     border: 1px solid #d1d9e6;

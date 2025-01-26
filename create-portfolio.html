@@ -31,7 +31,8 @@
             <input type="text" id="skills" placeholder="e.g., HTML, CSS, JavaScript">
 
             <label for="projects">Projects:</label>
-            <textarea id="projects" placeholder="List your projects"></textarea>
+            <input type="file" id="projects" name="projects" accept="image/*" multiple onchange="previewImages()" />
+            <div id="projects-preview"></div>
 
             <button type="button" id="clearButton">Clear</button>
         </form>
