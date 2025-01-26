@@ -246,15 +246,63 @@ p {
 }
 
 @media (max-width: 768px) {
+    #home {
+        padding: 40px 15px;  
+    }
+
+    .home-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: auto;  
+    }
+
+    .logo-container {
+        margin-bottom: 10px;  
+    }
+
+    .home-logo {
+        width: 120px;  
+    }
+
     .text-container h1 {
-        font-size: 2.5rem;  
+        font-size: 2.5rem;
     }
+
     .text-container p {
-        font-size: 1.5rem;  
+        font-size: 1.5rem;
     }
+
     .start-designing-btn {
-        padding: 10px 20px; 
-        font-size: 1rem;  
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .social-media-icons {
+        bottom: 10px; 
+        gap: 10px; 
+    }
+
+    .social-media-icon {
+        font-size: 20px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .text-container h1 {
+        font-size: 2rem;  
+    }
+
+    .text-container p {
+        font-size: 1.2rem;
+    }
+
+    .start-designing-btn {
+        padding: 8px 16px;  
+        font-size: 0.9rem;
+    }
+
+    .social-media-icon {
+        font-size: 18px;  
     }
 }
 
@@ -266,12 +314,16 @@ p {
     background-image: url('images/themeBG.png'); 
     background-size: cover;  
     background-position: center; 
+    display: flex; 
+    justify-content: center; 
+    flex-direction: column;
 }
 
 .theme-card {
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .card-header {
@@ -380,13 +432,38 @@ p {
 }
 
 @media (max-width: 768px) {
+    #portfolio-themes {
+        height: auto;   
+        padding: 30px 15px;  
+    }
+
     .carousel-inner {
         display: flex;
+        justify-content: center;   
+        align-items: center;  
+        height: auto;   
     }
 
     .theme-card {
-        width: 90%;
-        margin-bottom: 20px; 
+        width: 100%;  
+        max-width: 600px;   
+        margin-bottom: 20px;  
+    }
+
+    .card-body {
+        height: auto;  
+        padding: 20px;   
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 40px;  
+        height: 40px;  
+    }
+
+    .carousel-indicators button {
+        width: 10px;   
+        height: 10px;   
     }
 }
 
@@ -398,11 +475,13 @@ p {
     align-items: center;
     background-color: #EBF4F6;
     font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
 .contact-container {
     display: flex;
-    width: 90%;
+    width: 100%;
+    max-width: 1200px;
     height: 90%;
     border-radius: 8px;
     overflow: hidden;
@@ -416,6 +495,7 @@ p {
 
 .contact-form {
     flex: 1;
+    width: 100%;
     padding: 30px;
     background-color: #FFFFFF;
     color: #071952; 
@@ -423,6 +503,7 @@ p {
     flex-direction: column;
     justify-content: center;
     text-align: left;
+    border-radius: 8px;
 }
 
 .contact-form h2 {
@@ -450,11 +531,12 @@ p {
 .contact-form input,
 .contact-form textarea {
     margin-bottom: 15px;
-    padding: 1px;
+    padding: 10px;
     border: 1px solid #37B7C3;  
     border-radius: 5px;
     outline: none;
     font-size: 14px;
+    width: 100%;
 }
 
 .contact-form input:focus,
@@ -465,11 +547,11 @@ p {
 
 .contact-form textarea {
     resize: none;
-    height: 80px;
+    height: 120px;
 }
 
 .contact-form button {
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     background-color: #37B7C3; 
     color: white;
@@ -486,10 +568,13 @@ p {
 @media (max-width: 768px) {
     .contact-container {
         flex-direction: column;
+        width: 100%;
+        height: auto;
     }
 
     .map {
         height: 250px;
+        margin-bottom: 15px;
     }
 
     .contact-form {
@@ -497,7 +582,7 @@ p {
     }
 
     .contact-form h2 {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .contact-form p {
@@ -507,22 +592,26 @@ p {
     .contact-form input,
     .contact-form textarea {
         font-size: 13px;
-        padding: 6px;
+        padding: 8px;
     }
 
     .contact-form button {
         font-size: 14px;
-        padding: 8px;
+        padding: 10px;
     }
 }
 
 @media (max-width: 480px) {
     .contact-form h2 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .contact-form p {
         font-size: 12px;
+    }
+
+    .map {
+        height: 200px;  
     }
 }
 
@@ -632,24 +721,28 @@ section {
 
     .about-content p {
         font-size: 0.9em;
+        padding: 0 20px;
     }
 
     .team-members {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  
+        gap: 15px;
+        justify-items: center;
     }
 
     .team-member {
         max-width: 90%;  
+        height: auto;
+        margin: 0 auto;
     }
 
     .team-member img {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
     }
 
     .team-member h4 {
-        font-size: 1em;
+        font-size: 1.1em;
     }
 
     .team-member p {
@@ -668,19 +761,21 @@ section {
 
     .about-content p {
         font-size: 0.8em;
+        padding: 0 15px;
     }
 
     .team-member {
         padding: 10px;
+        max-width: 95%;
     }
 
     .team-member img {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
 
     .team-member h4 {
-        font-size: 0.9em;
+        font-size: 1em;
     }
 
     .team-member p {
